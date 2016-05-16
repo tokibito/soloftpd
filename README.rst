@@ -2,7 +2,8 @@
 soloftpd
 ========
 
-config:
+Config
+======
 
 .. code-block:: json
 
@@ -17,6 +18,14 @@ config:
      "permission": "elradfmw"
    }
 
-command::
+Command
+=======
+
+::
 
    $ soloftpd --config=/etc/soloftpd.conf
+
+License
+=======
+
+* MIT License (See the LICENSE file.)
