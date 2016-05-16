@@ -11,23 +11,27 @@ logger = logging.getLogger(__name__)
 
 
 class Command:
+    handler_class = FTPHandler
+    server_class = FTPServer
+    authorizer_class = Authorizer
+
     def make_parser(self):
         parser = argparse.ArgumentParser(description="Run soloftpd server.")
         parser.add_argument('--config', help="Use config file")
         return parser
 
     def make_authorizer(self, config):
-        return Authorizer(config.username, config.password, config.permission)
+        return self.authorizer_class(config.username, config.password, config.permission)
 
     def make_handler(self, config, authorizer):
-        handler = FTPHandler()
+        handler = self.handler_class
         handler.authorizer = authorizer
         handler.masquerade_address = config.masquerade_address
         handler.passive_ports = range(*config.passive_ports)
         return handler
 
     def make_server(self, config, handler):
-        server = FTPServer((config.address, config.port), handler)
+        server = self.server_class((config.address, config.port), handler)
         return server
 
     def __call__(self):
@@ -36,7 +40,7 @@ class Command:
         config_file = args.config
         if config_file:
             logger.info("Using config file: %s", config_file)
-            config = Config.from_file(self.config_file)
+            config = Config.from_file(config_file)
         else:
             config = Config()
         authorizer = self.make_authorizer(config)
