@@ -21,9 +21,13 @@ Config
 Command
 =======
 
-::
+start server::
 
    $ soloftpd --config=/etc/soloftpd.conf
+
+make password hash::
+
+   $ python -m soloftpd.authorizers your_password
 
 License
 =======

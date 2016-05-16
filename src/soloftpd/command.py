@@ -21,7 +21,11 @@ class Command:
         return parser
 
     def make_authorizer(self, config):
-        return self.authorizer_class(config.username, config.password, config.permission)
+        return self.authorizer_class(
+            config.username,
+            config.password,
+            config.directory,
+            config.permission)
 
     def make_handler(self, config, authorizer):
         handler = self.handler_class
