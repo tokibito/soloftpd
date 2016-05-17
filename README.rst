@@ -23,7 +23,11 @@ Command
 
 start server::
 
-   $ soloftpd --config=/etc/soloftpd.conf
+   $ soloftpd
+
+use custom config file(default: /etc/soloftpd.conf)::
+
+   $ soloftpd --config=/path/to/soloftpd.conf
 
 make password hash::
 

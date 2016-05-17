@@ -10,6 +10,7 @@ class Config:
     password = "egg"
     directory = "/tmp/"
     permission = "elradfmw"
+    logging = {}
 
     def __init__(self, **kwargs):
         if kwargs:

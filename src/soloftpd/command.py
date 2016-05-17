@@ -1,3 +1,4 @@
+import os
 import argparse
 import logging
 
@@ -17,7 +18,8 @@ class Command:
 
     def make_parser(self):
         parser = argparse.ArgumentParser(description="Run soloftpd server.")
-        parser.add_argument('--config', help="Use config file")
+        parser.add_argument(
+            '--config', help="Use config file", default="/etc/soloftpd.conf")
         return parser
 
     def make_authorizer(self, config):
@@ -42,10 +44,12 @@ class Command:
         parser = self.make_parser()
         args = parser.parse_args()
         config_file = args.config
-        if config_file:
+        if os.path.exists(config_file):
             logger.info("Using config file: %s", config_file)
             config = Config.from_file(config_file)
         else:
+            logger.info(
+                "File not exists: %s, using default config...", config_file)
             config = Config()
         authorizer = self.make_authorizer(config)
         handler = self.make_handler(config, authorizer)
