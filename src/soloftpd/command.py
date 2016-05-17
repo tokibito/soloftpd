@@ -33,7 +33,9 @@ class Command:
         handler = self.handler_class
         handler.authorizer = authorizer
         handler.masquerade_address = config.masquerade_address
-        handler.passive_ports = range(*config.passive_ports)
+        # ex. [100, 200] => range(100, 201)
+        handler.passive_ports = range(
+            config.passive_ports[0], config.passive_ports[1] + 1)
         return handler
 
     def make_server(self, config, handler):
