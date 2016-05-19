@@ -25,9 +25,13 @@ start server::
 
    $ soloftpd
 
-use custom config file(default: /etc/soloftpd.conf)::
+using custom config file(default: /etc/soloftpd.conf)::
 
    $ soloftpd --config=/path/to/soloftpd.conf
+
+override config with command line option::
+
+   $ soloftpd --username=ham --address=10.0.0.1
 
 make password hash::
 
