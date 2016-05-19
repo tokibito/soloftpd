@@ -91,7 +91,6 @@ class Command:
             config = Config()
         self.override_config(config, args)
         self.setup_logging(config)
-        print(config.__dict__)
         authorizer = self.make_authorizer(config)
         handler = self.make_handler(config, authorizer)
         server = self.make_server(config, handler)
