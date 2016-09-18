@@ -2,6 +2,7 @@ venv
 build
 dist
 .tox
+.cache
 *\.pyc
 *\.egg-info
 __pycache__
