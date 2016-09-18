@@ -21,7 +21,7 @@ setup(
     package_dir={'': 'src'},
     packages=find_packages('src'),
     entry_points={'console_scripts': [
-        'soloftpd = soloftpd.command:main',
+        'soloftpd = soloftpd.app:main',
     ]},
     author='Shinya Okano',
     author_email='tokibito@gmail.com',
