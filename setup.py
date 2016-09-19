@@ -18,8 +18,7 @@ setup(
     version='0.4.1',
     description="FTP server application.",
     long_description=read('README.rst'),
-    package_dir={'': 'src'},
-    packages=find_packages('src'),
+    packages=find_packages(),
     entry_points={'console_scripts': [
         'soloftpd = soloftpd.app:main',
     ]},
