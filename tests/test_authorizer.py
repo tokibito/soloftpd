@@ -27,7 +27,6 @@ class AuthorizerTest(TestCase):
         self.temp_directory_context.__exit__(None, None, None)
 
     def test_it(self):
-        from pyftpdlib.authorizers import AuthenticationFailed
         authorizer = self._getOne(
             username="spam",
             password="4fa6024f12494d3a99d8bda9b7a55f7d140f328a",
@@ -37,7 +36,8 @@ class AuthorizerTest(TestCase):
         with self.subTest("validate_password"):
             self.assertTrue(authorizer.validate_password("egg"))
         with self.subTest("validate_authentication"):
-            self.assertIsNone(authorizer.validate_authentication("spam", "egg", None))
+            self.assertIsNone(
+                authorizer.validate_authentication("spam", "egg", None))
         with self.subTest("get_home_dir"):
             self.assertEqual(
                 authorizer.get_home_dir("spam"),
@@ -47,7 +47,8 @@ class AuthorizerTest(TestCase):
         with self.subTest("get_perm"):
             self.assertEqual(authorizer.get_perms("spam"), "elradfmw")
         with self.subTest("get_msg_login"):
-            self.assertEqual(authorizer.get_msg_login("spam"), "Login successful.")
+            self.assertEqual(
+                authorizer.get_msg_login("spam"), "Login successful.")
         with self.subTest("get_msg_quit"):
             self.assertTrue(authorizer.get_msg_quit("spam"), "Goodbye.")
         with self.subTest("impersonate_user"):
