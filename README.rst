@@ -2,6 +2,8 @@
 soloftpd
 ========
 
+|build-status|
+
 Config
 ======
 
@@ -41,3 +43,6 @@ License
 =======
 
 * MIT License (See the LICENSE file.)
+
+.. |build-status| image:: https://travis-ci.org/tokibito/soloftpd.svg?branch=master
+   :target: https://travis-ci.org/tokibito/soloftpd
