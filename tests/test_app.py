@@ -11,16 +11,16 @@ class ApplicationTest(TestCase):
         from soloftpd.command import Command
         application = self._getOne()
         cmd = application.make_command()
-        self.assertTrue(
-            isinstance(cmd, Command),
+        self.assertIsInstance(
+            cmd, Command,
             "It makes Command instance.")
 
     def test_make_server(self):
         from soloftpd.server import Server
         application = self._getOne()
         server = application.make_server(None)
-        self.assertTrue(
-            isinstance(server, Server),
+        self.assertIsInstance(
+            server, Server,
             "It makes Server instance.")
 
     def test_run(self):

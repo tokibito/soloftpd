@@ -17,6 +17,7 @@ class Server:
 
     def __init__(self, config=None):
         self.config = config if config is not None else Config()
+        self.server = None
 
     def make_authorizer(self, config):
         return self.authorizer_class(
@@ -47,5 +48,5 @@ class Server:
         self.setup_logging(self.config)
         authorizer = self.make_authorizer(self.config)
         handler = self.make_handler(self.config, authorizer)
-        server = self.make_server(self.config, handler)
-        server.serve_forever()
+        self.server = self.make_server(self.config, handler)
+        self.server.serve_forever()
