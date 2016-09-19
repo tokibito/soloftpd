@@ -12,15 +12,17 @@ class Application:
     def make_server(self, config):
         return self.server_class(config)
 
-    def run(self):
+    def run(self, args=None):
         command = self.make_command()
-        config = command.parse()
+        config = command.parse(args)
         server = self.make_server(config)
         server.start()
 
 
 def main(application_class=Application):
-    application_class().run()
+    application = application_class()
+    application.run()
+    return application
 
 if __name__ == '__main__':
     main()
