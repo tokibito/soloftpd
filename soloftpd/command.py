@@ -57,3 +57,4 @@ class Command:
                 "File not exists: %s, using default config...", config_file)
             config = Config()
         self.override_config(config, args)
+        return config
