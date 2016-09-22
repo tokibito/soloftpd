@@ -15,7 +15,7 @@ def read(filename):
 
 setup(
     name='soloftpd',
-    version='0.5.0',
+    version='0.5.1',
     description="FTP server application.",
     long_description=read('README.rst'),
     packages=find_packages(),
